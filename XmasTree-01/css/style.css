@@ -1,0 +1,12 @@
+p{
+	text-align: center;
+    line-height: 0;
+}
+input{
+	display: block;
+	margin-top:25px;
+}
+body > div{
+	width:1200px;
+	margin: auto;
+}
