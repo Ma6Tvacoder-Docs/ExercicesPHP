@@ -73,6 +73,6 @@ On commence par declarer les balises formulaire qui contiendra la methode GET ai
 A l'interieur des balise on rajoutera un label avec la mention 'Quel taille fera votre sapin ?'
 Un champ input qui permettra de récolter le nombre choisi pour generer ses branches.
 
-Si vous ne savez pas comment faire allez voir sur cette page : 
+Si vous ne savez pas comment faire allez voir [ici](http://www.w3schools.com/html/html_forms.asp)
 
-[GitHub](http://www.w3schools.com/html/html_forms.asp)
+
