@@ -4,9 +4,9 @@
 
 Dans cet exercice vous apprendrez à utiliser les boucles 'for' pour travailler sur des données de manieres procedural. Avec la boucle 'for' ou travail sur un ensemble de donnée en même temps et dans un ordre precis également.
 	
-* - formulaire --> GET
-* - includes
-* - boucles FOR
+* formulaire --> GET
+* includes
+* boucles FOR
 
 Le but de l'exercice va être de creer un formulaire en méthode GET afin de récupérer une variable qui va générer notre Sapin de noël. Les étages du sapin, du tronc ainsi que le nombre de feuilles devront être indéxé sur cette variable.
 
