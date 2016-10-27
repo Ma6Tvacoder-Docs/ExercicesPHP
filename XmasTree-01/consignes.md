@@ -7,7 +7,7 @@ Pour bien commencer votre exercice, dans la console bash une fois que vous avez 
 ## les boucles For ##
 
 Dans cet exercice vous apprendrez à utiliser les boucles 'for' pour travailler sur des données de manieres procedural. Avec la boucle 'for' ou travail sur un ensemble de donnée en même temps et dans un ordre precis également.
-	
+
 * formulaire --> GET
 * includes PHP
 * boucles FOR
@@ -16,7 +16,7 @@ Le but de l'exercice va être de creer un formulaire en méthode GET afin de ré
 
 ### 1. Les fichiers : ###
 
-Nous allons utiliser le principe des includes afin d'utiliser de profiter du coté dynamique du PHP. On aura besoin pour ce faire d' un fichier index pour lancer l'exercice, un header qui regroupera toutes les informations et un fichier Sapin qui va générer notre sapin.
+Nous allons utiliser le principe des includes afin de profiter du coté dynamique du PHP. On aura besoin pour ce faire d'un fichier index pour lancer l'exercice, un header qui regroupera toutes les informations et un fichier Sapin qui va générer notre sapin.
 
 #### header.php ####
 
@@ -36,11 +36,11 @@ une balise body ouvrante et notre formulaire que nous construiront plus tard. Ce
 					<link type="stylesheet" src="css/style.css">
 				</head>
 				<body>
-					
+
 
 #### index.php ####
 
-Le fichier index va simplement charger le header en include et fermer les balise body et html. Il nous permet de ne pas avoir de message d'erreur sur les variables php. Il est possible de faire differement pour n'avoir qu'un seul fichier index qui va tout générer mais par soucis de simplification et de compréhenssion nous procederons de la sorte. 
+Le fichier index va simplement charger le header en include et fermer les balise body et html. Il nous permet de ne pas avoir de message d'erreur sur les variables php. Il est possible de faire differement pour n'avoir qu'un seul fichier index qui va tout générer mais par soucis de simplification et de compréhenssion nous procederons de la sorte.
 
 * a. include header
 * b. body fermante
@@ -74,5 +74,3 @@ A l'interieur des balise on rajoutera un label avec la mention 'Quel taille fera
 Un champ input qui permettra de récolter le nombre choisi pour generer ses branches.
 
 Si vous ne savez pas comment faire allez voir [ici](http://www.w3schools.com/html/html_forms.asp)
-
-

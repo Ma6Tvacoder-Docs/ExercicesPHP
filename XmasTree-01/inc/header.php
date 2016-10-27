@@ -7,8 +7,5 @@
 </head>
 <body>
 	<div>
-		<h1>Xmas Tree</h1>
-		<form methode="get" action="sapin.php" >
-			<label for="nombre">Combien voulez vous d'étage à votre sapin?</label>
-			<input type="text" name="nb">
-		</form>	
+		<h1>Exercice - Sapin de Noël</h1>
+		<p>Voici le liens vers les consignes de cet exercice : <a href="https://github.com/Ma6Tvacoder-Docs/ExercicesPHP/blob/master/XmasTree-01/consignes.md" target="_blank">ici</a></p>
