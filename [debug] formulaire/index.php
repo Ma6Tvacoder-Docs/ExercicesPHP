@@ -24,32 +24,33 @@
             <h1>Me contacter </h1>
 
             <?php
+
             if(
-                !empty($_POST['mail'])
-                !empty($_POST['nme']) &&
+                !empty($_POST['mail']) &&
+                !empty($_POST['name']) &&
                 !empty($_POST['message'])
             ){
-                mail('grafikart@yopmail.com', 'Formulaire de contact', $_POST['message'], $headers)
+                $headers = "From:". $_POST['mail'];
+                mail('grafikart@yopmail.com', 'Formulaire de contact', $_POST['message'], $headers);
             }elseif(!empty($_POST)){
                 echo '<div class="alert alert-danger">Vous n\'avez pas rempli tous les champs</div>';
             }
             ?>
 
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, fugiat, in iure veritatis accusamus eligendi vero ea blanditiis illum id. Libero, eveniet explicabo nihil maiores nisi ratione commodi vel natus?</p>
-
             <form role="form" method="post">
                 <fieldset>
                     <div class="form-group">
                         <label for="mail">Adresse email</label>
-                        <input type="text" class="form-control" name="mail" id="mail" placeholder="nom@domain.com" value="<?php echo $_POST['mail']; ?>">
+                        <input type="text" class="form-control" name="mail" id="mail" placeholder="nom@domain.com" value="<?php echo isset($_POST['mail']) ? $_POST['mail'] : "" ?>">
                     </div>
                     <div class="form-group">
                         <label for="name">Votre nom</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="" value="<?php echo $_POST['name']; ?>">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="votre nom" value="<?php  if( isset($_POST['name']) ) { echo $_POST['name']; };  ?>">
                     </div>
                     <div class="form-group">
                         <label for="message">Votre message</label>
-                        <textarea name="message" id="message" class="form-control" rows="3"><?php echo $_POST['message']; ?></textarea>
+                        <textarea name="message" id="message" class="form-control" rows="3" placeholder="texte à ajouter"><?php if(isset($_POST['message'])){echo $_POST['message']; }?></textarea>
                     </div>
 
                     <input type="submit" value="Envoyer" class="btn btn-primary">
