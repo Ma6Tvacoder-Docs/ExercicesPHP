@@ -1,0 +1,51 @@
+*{
+	
+	box-sizing: border-box;
+}
+
+.containerr{
+
+	width: 252px;
+	margin-top: 50px;
+	
+	
+}
+.visage{
+
+	position: relative;
+	z-index: 1;
+}
+.yeux,.nez,.bouche{
+
+	position: absolute;
+	z-index: 3;
+}
+
+.yeux{
+
+	top:237px;
+	right: 699px;
+}
+
+.nez{
+
+	top:239px;
+	right: 700px;
+}
+
+.bouche{
+
+	top:261px;
+	right: 703px;
+}
+
+img{
+
+	height: 250px;
+	width: 250px;
+}
+.formsave{position: absolute;
+    top: 300px;
+    left: 350px;
+    margin-top: 40px;
+}

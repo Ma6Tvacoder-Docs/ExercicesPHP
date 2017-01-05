@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../modeles/modeles.php');
 
 function select($tableaux){
@@ -9,17 +9,16 @@ function select($tableaux){
 
 	foreach($tableaux as $key => $tableau){
 
-		
 			foreach ($tableau as $cles => $value) {
 				foreach($value as $cle => $v){
-					
+
 					//var_dump($cle);
 					if($v%2 == 1){
 						$id = $cle;
 						var_dump($id);
 					}
 					if($v%2 == 0){
-						$valeur = $cle; 
+						$valeur = $cle;
 						//var_dump($valeur);
 					}
 					$valeur = $value;
@@ -42,4 +41,3 @@ function select($tableaux){
 
 select($t);
 //echo $yeux;
-
