@@ -1,92 +1,107 @@
-<?php 
-require_once ('db_connect.php');
+<?php
+require_once 'db_connect.php';
 
+// Initialisation des variables
+$data = '';
+$tableau = array();
 
-// Implémentation de la BDD
+//Fonction Setter enregistre une image dans la base de donnée, le $data correspond a la table souhaité et le $photo a l'image en question
 
-if (!function_exists('remplir')) {
-	function remplir($nomDossier){
-		$dossier = scandir('../modeles/img/'.$nomDossier );
-		$newDossier = array();
-		for($i=0;$i < count($dossier);$i++){
-			if ($i > 1) {
-				array_push($newDossier, $dossier[$i]);
-			}
-		}
-
-		return $newDossier;
+function setter($data,$photo){
+	global $pdo;
+	$select = 'img_'.$data;
+	$sqlVerif = 'SELECT * FROM '.$data.' WHERE '.$select.'="'.$photo.'"';
+	$queryVerif = $pdo->query($sqlVerif);
+	$resultVerif = $queryVerif->fetchAll(PDO::FETCH_OBJ);
+	$countVerif= count($resultVerif);
+	if($countVerif > 0){?>
+		<script type='text/javascript'>
+			alert('Image Déja Enregistrer');
+		</script>
+					<?php
+	}else{
+		$sql = 'INSERT INTO '.$data.'('.$select.') VALUES ("'.$photo.'")';
+		$query = $pdo -> query($sql);
 	}
-
-
-}
-
-if (!function_exists('logique')) {
-	function logique(){
-		global $pdo;
-		$remplir = remplir('');
-
-		foreach ($remplir as $value) {
-
-			$table = $value;
-			$remplir = remplir($value);
-
-			foreach ($remplir as $value) {
-
-					$query = $pdo->query("SELECT img_$table FROM $table WHERE  img_$table = '".$value. "'");
-
-					if($query->rowCount() < 1){
-
-						$query = $pdo -> exec("INSERT INTO $table(id_$table, img_$table) VALUES('','".$value."')");
 	
-					}
+}
+	
 
-				}
-			}
-				
-				
+//Fonction Getter sort la table donné en $data et le nmobre de résultat souhaiter en $number
+function getter($data,$number){
+	global $pdo;
+	global $tableau;
+	$sql = 'SELECT * FROM '.$data;
+	$query = $pdo -> query($sql);
+	$result = $query->fetchAll(PDO::FETCH_OBJ);
+	$countResult = count($result);
+	if($countResult < $number){
+		echo 'Ce nombre est trop élévé pour satisfaire votre requête. Il y a actuellement '.$countResult.' résultats dans la bdd';
+	}else{?>
+		<select name='<?=$data;?>' required>
+		<option value="">Sélectionner une Valeur</option>
+	<?php
+		for($i=0;$i <$number;$i++){
+			$str = 'img_'.$data;?>
+			<option value="<?=$result[$i]->$str;?>"><?=$result[$i]->$str;?></option><?php
+		}?>
+		</select>
+		<?php
 	}
 
+	$tableau[] = $data;		
 }
 
-logique();
+function saver($nom,$ensemble){
+	global $pdo;
+	$sql='INSERT INTO ensemble(nom, ensemble) VALUES ("'.$nom.'","'.$ensemble.'")';
+	$query = $pdo -> query($sql);
 
-
-// Création des variables objet
-
-
-if (!function_exists('data')) {
-	function data(){
-		global $pdo;
-
-
-		$req = $pdo->query("SHOW tables");
-
-		while($table = $req->fetch(PDO::FETCH_ASSOC)){
-
-				echo $table['Tables_in_trombinoschool'].'<br>';
-
-				 $tables [] = $table;
-
+}
+function showEnsemble($number){
+	global $tableau;
+	global $pdo;
+	$sql = 'SELECT * FROM ensemble LIMIT '.$number;
+	$query = $pdo -> query($sql);
+	$result = $query->fetchAll(PDO::FETCH_OBJ);
+	$countResult = count($result);
+	if($countResult < $number){
+		echo 'Ce nombre est trop élévé pour satisfaire votre requête. Il y a actuellement '.$countResult.' résultats dans la bdd';
+	}else{
+	echo '<form action="" method="get">';
+	echo '<select name="existing">';
+	echo '<option value="">Sélectionner une Valeur</option>';
+	for($j =0;$j < $number;$j++){
+		$ensemble = explode(',',$result[$j]->ensemble);
+		$visage = $ensemble[0];
+		$yeux = $ensemble[1];
+		$nez = $ensemble[2];
+		$bouche = $ensemble[3];
+		?>
+			<option value="<?=$result[$j]->nom;?>"><?=$result[$j]->nom;?></option><?php
+	}
+		echo '</select>
+		<input type="submit" value="Charger"></form>';
+		if(isset($_GET['existing']) && !empty($_GET['existing'])){
+			$sql = 'SELECT * FROM ensemble WHERE nom="'.$_GET['existing'].'"';
+			$query = $pdo -> query($sql);
+			$result = $query->fetchAll(PDO::FETCH_OBJ);
+			$countResult = count($result);
+			for($j =0;$j < $number;$j++){
+				$ensemble = explode(',',$result[$j]->ensemble);
+				$visage = $ensemble[0];
+				$yeux = $ensemble[1];
+				$nez = $ensemble[2];
+				$bouche = $ensemble[3];
+				var_dump($ensemble);
+				?>
+				<img src="../modeles/img/<?=$tableau[2];?>/<?=$visage;?>" class="visage" >
+				<img src="../modeles/img/<?=$tableau[1];?>/<?=$yeux;?>"  class="yeux">
+				<img src="../modeles/img/<?=$tableau[0];?>/<?=$nez;?>"  class="nez">
+				<img src="../modeles/img/<?=$tableau[3];?>/<?=$bouche;?>"  class="bouche" >
+				<?php
+			}
 		}
-		
-
-		
-			foreach ($tables as $key => $table) {
-				
-						$query = $pdo->query("SELECT * FROM {$table['Tables_in_trombinoschool']}");
-
-						$datas = $query->fetchAll(PDO::FETCH_ASSOC);
-						global $t;
-						$t[] = $datas;
-			}
-/*var_dump($t);*/
-
-
 	}
 }
-
-data();
-
-/*var_dump($t);*/
-
 
