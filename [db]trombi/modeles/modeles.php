@@ -86,21 +86,18 @@ function showEnsemble($number){
 			$sql = 'SELECT * FROM ensemble WHERE nom="'.$_GET['existing'].'"';
 			$query = $pdo -> query($sql);
 			$result = $query->fetchAll(PDO::FETCH_OBJ);
-			$countResult = count($result);
-			for($j =0;$j < $number;$j++){
-				$ensemble = explode(',',$result[$j]->ensemble);
+				$ensemble = explode(',',$result[0]->ensemble);
 				$visage = $ensemble[0];
 				$yeux = $ensemble[1];
 				$nez = $ensemble[2];
 				$bouche = $ensemble[3];
-				var_dump($ensemble);
 				?>
 				<img src="../modeles/img/<?=$tableau[2];?>/<?=$visage;?>" class="visage" >
 				<img src="../modeles/img/<?=$tableau[1];?>/<?=$yeux;?>"  class="yeux">
 				<img src="../modeles/img/<?=$tableau[0];?>/<?=$nez;?>"  class="nez">
 				<img src="../modeles/img/<?=$tableau[3];?>/<?=$bouche;?>"  class="bouche" >
 				<?php
-			}
+			
 		}
 	}
 }
