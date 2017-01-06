@@ -5,6 +5,7 @@ require_once 'db_connect.php';
 $data = '';
 $tableau = array();
 
+
 //Fonction Setter enregistre une image dans la base de donnée, le $data correspond a la table souhaité et le $photo a l'image en question
 
 function setter($data,$photo){
@@ -59,6 +60,10 @@ function saver($nom,$ensemble){
 
 }
 function showEnsemble($number){
+	global $visageSave;
+	global $yeuxSave;
+	global $nezSave;
+	global $boucheSave;
 	global $tableau;
 	global $pdo;
 	$sql = 'SELECT * FROM ensemble LIMIT '.$number;
@@ -87,18 +92,24 @@ function showEnsemble($number){
 			$query = $pdo -> query($sql);
 			$result = $query->fetchAll(PDO::FETCH_OBJ);
 				$ensemble = explode(',',$result[0]->ensemble);
-				$visage = $ensemble[0];
-				$yeux = $ensemble[1];
-				$nez = $ensemble[2];
-				$bouche = $ensemble[3];
-				?>
-				<img src="../modeles/img/<?=$tableau[2];?>/<?=$visage;?>" class="visage" >
-				<img src="../modeles/img/<?=$tableau[1];?>/<?=$yeux;?>"  class="yeux">
-				<img src="../modeles/img/<?=$tableau[0];?>/<?=$nez;?>"  class="nez">
-				<img src="../modeles/img/<?=$tableau[3];?>/<?=$bouche;?>"  class="bouche" >
-				<?php
-			
+				$visageSave = $ensemble[0];
+				$yeuxSave = $ensemble[1];
+				$nezSave = $ensemble[2];
+				$boucheSave = $ensemble[3];
 		}
+	}
+}
+
+function image($args){
+	if(gettype($args) === 'array'){
+		?>
+		<img src="<?=$args[0];?>" class="visage" >
+		<img src="<?=$args[1];?>"  class="yeux">
+		<img src="<?=$args[2];?>"  class="nez">
+		<img src="<?=$args[3];?>"  class="bouche" >
+	<?php
+	}else{
+		echo 'args must be an array';
 	}
 }
 
