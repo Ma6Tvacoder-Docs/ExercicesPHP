@@ -14,52 +14,56 @@
 	<section class="col-lg-3 divBorder">
 		<h1 id="title">TrombinoSchool</h1>
 		<form action="" method="post">
-		<label for="nom" id="labelName">name</label>
-		<input type="text" name="nom">
 		<div class="col-lg-12">
 			
 		</div>
 		<div class="col-lg-6  firstColumn">
-			<label class="labelAttr">face</label>
+			<label class="labelAttr">visage</label>
 			<?php 
-				getter('visage',13);
+				getter('visage');
 			?>
-			<label class="labelAttr">nose</label>
+			<label class="labelAttr">nez</label>
 			<?php
-				getter('nez',13);
+				getter('nez');
 			?>
 			<button class="buttonCheck">Hasard</button>	
 		</div>
 		<div class="col-lg-6  secondColumn">
-			<label class="labelAttr">eyes</label>
+			<label class="labelAttr">yeux</label>
 			<?php
-				getter('yeux',13);
+				getter('yeux');
 			?>
-			<label class="labelAttr">stuffy</label>
+			<label class="labelAttr">bouche</label>
 			<?php
-				getter('bouche',13); 
+				getter('bouche'); 
 			?>
 			<input type="submit" value="Envoyer" class="buttonCheck">
 		</div>
 		
 </form>
 </section>
-<section class="col-lg-3 divBorder">
+
 	<?php
 $ensembleArray = array();
-
-if(isset($_POST) && !empty($_POST) && !isset($_GET['existing']) && empty($_GET['existing'])){
+if(isset($_GET['existing'])){
+	echo '<a href="index.php" class="return">Retour</a>';
+}
+if(isset($_POST) && !empty($_POST) && !isset($_GET['existing']) && empty($_GET['existing'])){?>
+	<section class="col-lg-3 divBorder">
+	<?php
 	$visage = $_POST['visage'];
 	$yeux = $_POST['yeux'];
 	$nez = $_POST['nez'];
 	$bouche = $_POST['bouche'];
 	$args =array('../modeles/img/'.$tableau[0].'/'.$visage,'../modeles/img/'.$tableau[2].'/'.$yeux,'../modeles/img/'.$tableau[1].'/'.$nez,'../modeles/img/'.$tableau[3].'/'.$bouche);
 	?>
-	<form action="../modeles/action.php" method="post" class="formsave">
-				
+	<form action="../modeles/action.php" method="post" class="formsave none">
+				<label for="nom" id="labelName">nom du fichier</label>
+				<input type="text" name="nom">
 				<?php $ensemble = $visage.",".$yeux.",".$nez.",".$bouche; ?>
 				<input type="hidden" value="<?=$ensemble;?>" name='ensemble'>
 				<input type="submit" value="Enregistrer">
+				
 			</form>
 	<div class="containerr">
 		<?php
@@ -67,13 +71,14 @@ if(isset($_POST) && !empty($_POST) && !isset($_GET['existing']) && empty($_GET['
 			image($args);
 		?>
 	</div>
+	</section>
 	<?php
-	}
-	?>
-</section>
+	}else{?>
+	<section class="col-lg-3 divBorder">
+	<?php 
 
-	<div class="col-lg-12">
-			<?php showEnsemble(2);
+	showEnsemble();
+	if(!empty($_GET)){
 			$visagePath = '../modeles/img/'.$tableau[0].'/'.$visageSave;
 			$yeuxPath = '../modeles/img/'.$tableau[2].'/'.$yeuxSave;
 			$nezPath = '../modeles/img/'.$tableau[1].'/'.$nezSave;
@@ -83,15 +88,14 @@ if(isset($_POST) && !empty($_POST) && !isset($_GET['existing']) && empty($_GET['
 				$yeuxPath,
 				$nezPath,
 				$bouchePath
-			);
-			image($args);
-			?>
-
-		</div>
+			);?>
+			<div class="containerr">
 		<?php
-		
-		
+			image($args);
 		?>
+	</div>
+	</section>
+<?php }}?>
 </div>	
 </body>
 </html>
