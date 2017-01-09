@@ -2,11 +2,13 @@
 	
 	box-sizing: border-box;
 }
-
+.content{
+	margin:0 auto;
+}
 .containerr{
 
 	width: 252px;
-	margin-top: 50px;
+	margin :auto 0;
 	
 	
 }
@@ -14,6 +16,8 @@
 
 	position: relative;
 	z-index: 1;
+	margin-left: 100px;
+    margin-top: 51px;
 }
 .yeux,.nez,.bouche{
 
@@ -23,29 +27,92 @@
 
 .yeux{
 
-	top:237px;
-	right: 699px;
+	top:50px;
+	right: 119px;
 }
 
 .nez{
 
-	top:239px;
-	right: 700px;
+	top:48px;
+	right: 118px;
 }
 
 .bouche{
 
-	top:261px;
-	right: 703px;
+	top:49px;
+	right: 115px;
 }
 
 img{
 
-	height: 250px;
+	height: auto;
 	width: 250px;
 }
-.formsave{position: absolute;
-    top: 300px;
-    left: 350px;
-    margin-top: 40px;
+.formsave{
+	position: absolute;
+    top: 199px;
+    right: 554px;
+    margin-top: 41px;
+}
+.firstColumn{
+	display: inline-block;
+    width: 202px;
+    line-height: 35px;
+}
+.secondColumn{
+	display: inline-block;
+    width: 202px;
+    line-height: 35px;
+}
+.divBorder{
+	border: solid 1px black;
+}
+.buttonCheck{
+	width: 177px;
+	border: solid 2px black;
+}
+label{
+	width: 33px;
+	display: block;
+}
+section{
+	height: 339px;
+}
+#labelName{
+	width: 150px;
+    margin-left: 2px;
+	text-transform: uppercase;
+}
+.labelAttr{
+	text-transform: uppercase;
+	margin-bottom: -12px;
+}
+input[name="nom"]{
+	width: 377px;
+	border: solid 2px black;
+	margin-bottom: 10px;
+}
+select{
+	border: solid 2px black;
+}
+#title{
+	text-align: center;
+}
+.block{
+	display: block;
+}
+.none{
+	display: none;
+}
+.return{
+	text-decoration: none;
+	position: relative;
+    top: 17px;
+    right: 77px;
+    border: solid 2px black;
+    padding: 3px 7px 3px 7px;
+    z-index: 5;
+}
+.option{
+	width: 100%;
 }
