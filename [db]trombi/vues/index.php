@@ -46,7 +46,7 @@
 	<?php
 $ensembleArray = array();
 if(isset($_GET['existing'])){
-	echo '<a href="index.php" class="return">Retour</a>';
+	echo '<a href="../vues" class="return">Retour</a>';
 }
 if(isset($_POST) && !empty($_POST) && !isset($_GET['existing']) && empty($_GET['existing'])){?>
 	<section class="col-lg-3 divBorder">
@@ -57,7 +57,7 @@ if(isset($_POST) && !empty($_POST) && !isset($_GET['existing']) && empty($_GET['
 	$bouche = $_POST['bouche'];
 	$args =array('../modeles/img/'.$tableau[0].'/'.$visage,'../modeles/img/'.$tableau[2].'/'.$yeux,'../modeles/img/'.$tableau[1].'/'.$nez,'../modeles/img/'.$tableau[3].'/'.$bouche);
 	?>
-	<form action="../modeles/action.php" method="post" class="formsave none">
+	<form action="../modeles/action.php" method="post" class="formsave">
 				<label for="nom" id="labelName">nom du fichier</label>
 				<input type="text" name="nom">
 				<?php $ensemble = $visage.",".$yeux.",".$nez.",".$bouche; ?>
@@ -97,6 +97,7 @@ if(isset($_POST) && !empty($_POST) && !isset($_GET['existing']) && empty($_GET['
 	</section>
 <?php }}?>
 </div>	
+<a href='../vues'>Refresh</a>
 </body>
 </html>
 

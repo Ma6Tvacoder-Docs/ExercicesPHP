@@ -79,7 +79,8 @@ section{
 	height: 339px;
 }
 #labelName{
-	margin-left: 15px;
+	width: 150px;
+    margin-left: 2px;
 	text-transform: uppercase;
 }
 .labelAttr{
@@ -89,6 +90,7 @@ section{
 input[name="nom"]{
 	width: 377px;
 	border: solid 2px black;
+	margin-bottom: 10px;
 }
 select{
 	border: solid 2px black;

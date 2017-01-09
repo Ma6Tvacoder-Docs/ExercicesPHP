@@ -42,6 +42,7 @@ function showEnsemble(){
 	global $boucheSave;
 	global $tableau;
 	global $pdo;
+	global $ensemble;
 	$sql = 'SELECT * FROM ensemble WHERE 1';
 	$query = $pdo -> query($sql);
 	$result = $query->fetchAll(PDO::FETCH_OBJ);
@@ -97,15 +98,11 @@ function getter($data){
 	global $pdo;
 	global $tableau;
 	global $ensemble;
-	global $visageSave;
-	global $yeuxSave;
-	global $nezSave;
-	global $boucheSave;
-	global $test;
 	$sql = 'SELECT * FROM '.$data;
 	$query = $pdo -> query($sql);
 	$result = $query->fetchAll(PDO::FETCH_OBJ);
 	$countResult = count($result);
+
 	?>
 		<select name='<?=$data;?>' required class="option">
 		<option value="<?php if(isset($_POST[$data])){echo $_POST[$data];}?>"><?php if(isset($_POST[$data])){echo $_POST[$data];}else{ echo 'Sélectionner une valeur';}?></option>
@@ -113,7 +110,7 @@ function getter($data){
 		for($i=0;$i <$countResult;$i++){
 			$str = 'img_'.$data;
 			?>
-			<option value="<?php echo $result[$i]->$str;?>"><?php echo $result[$i]->$str;?></option><?php
+			<option value="<?php echo $result[$i]->$str;?>"><?php echo $result[$i]->nom;?></option><?php
 		}?>
 		</select>
 		<?php
