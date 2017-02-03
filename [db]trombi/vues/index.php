@@ -6,27 +6,26 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-	<title>Trombinoschool</title>
+	<title>Trombino-PoleS</title>
 </head>
-<body>
+<body style="background-image: url(../modeles/img/background.jpg);">
 <div class="content">
-	<section class="col-lg-3 divBorder">
-		<h1 id="title">TrombinoSchool</h1>
+	<section class="col-lg-4 divBorder">
+		<h1 id="title">Trombino-PoleS</h1>
 		<form action="" method="post">
 		<div class="col-lg-12">
-			
+
 		</div>
 		<div class="col-lg-6  firstColumn">
 			<label class="labelAttr">visage</label>
-			<?php 
+			<?php
 				getter('visage');
 			?>
 			<label class="labelAttr">nez</label>
 			<?php
 				getter('nez');
 			?>
-			<button class="buttonCheck">Hasard</button>	
+			<button class="buttonCheck">Hasard</button>
 		</div>
 		<div class="col-lg-6  secondColumn">
 			<label class="labelAttr">yeux</label>
@@ -35,11 +34,13 @@
 			?>
 			<label class="labelAttr">bouche</label>
 			<?php
-				getter('bouche'); 
+				getter('bouche');
 			?>
 			<input type="submit" value="Envoyer" class="buttonCheck">
 		</div>
-		
+		<button id="bouton" class="buttonCheck place"><a href='../vues'>Refresh</a></button>
+
+
 </form>
 </section>
 
@@ -63,7 +64,7 @@ if(isset($_POST) && !empty($_POST) && !isset($_GET['existing']) && empty($_GET['
 				<?php $ensemble = $visage.",".$yeux.",".$nez.",".$bouche; ?>
 				<input type="hidden" value="<?=$ensemble;?>" name='ensemble'>
 				<input type="submit" value="Enregistrer">
-				
+
 			</form>
 	<div class="containerr">
 		<?php
@@ -74,8 +75,8 @@ if(isset($_POST) && !empty($_POST) && !isset($_GET['existing']) && empty($_GET['
 	</section>
 	<?php
 	}else{?>
-	<section class="col-lg-3 divBorder">
-	<?php 
+	<section id="secondaire" class="col-lg-4 divBorder">
+	<?php
 
 	showEnsemble();
 	if(!empty($_GET)){
@@ -96,9 +97,6 @@ if(isset($_POST) && !empty($_POST) && !isset($_GET['existing']) && empty($_GET['
 	</div>
 	</section>
 <?php }}?>
-</div>	
-<a href='../vues'>Refresh</a>
+</div>
 </body>
 </html>
-
-
